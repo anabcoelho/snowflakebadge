@@ -32,6 +32,6 @@ sl.dataframe(mostra_pramim)
 
 
 fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
-sl.text(fruityvice_response)
+sl.text(fruityvice_response.json()
 
 
