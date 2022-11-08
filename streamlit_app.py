@@ -1,5 +1,6 @@
 import streamlit as sl
 import pandas as pd
+import requests as req
 
 
 sl.title('O jantar po')
@@ -28,3 +29,9 @@ mostra_pramim = lista_fruta.loc[meufiltro]
 # Display the table on the page.
 
 sl.dataframe(mostra_pramim)
+
+
+fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
+sl.text(fruityvice_response)
+
+
