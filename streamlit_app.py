@@ -1,4 +1,6 @@
 import streamlit as sl
+import pandas as pd
+
 
 sl.title('O jantar po')
 
@@ -13,3 +15,6 @@ sl.text('''Duas formigas se encontraram e pararam para conversar:
 - Fu Miga!''')
 
 sl.header('🥝🍇🍌🥭 boracozinhar 🥝🍇🍌🥭')
+
+lista_fruta = pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt')
+sl.dataframe(lista_fruta)
