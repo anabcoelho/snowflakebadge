@@ -22,7 +22,7 @@ lista_fruta = pd.read_csv('https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw
 lista_fruta = lista_fruta.set_index('Fruit')
 
 # colocar um filtrozin
-streamlit.multiselect("escolhe a fruta:", list(lista_fruta.index), ['Avocado','Strawberries'])
+streamlit.multiselect("escolhe a fruta:", list(lista_fruta.index),['Avocado','Strawberries'])
 
 # Display the table on the page.
 
