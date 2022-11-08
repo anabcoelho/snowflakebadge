@@ -32,6 +32,7 @@ sl.dataframe(mostra_pramim)
 
 
 fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
+sl.header("Fruityvice Fruit Advice!")
 sl.text(fruityvice_response.json()
 
 
