@@ -4,6 +4,12 @@ import requests as req
 import snowflake.connector
 
 
+def insert_row_snowflake(new_fruit):
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute(f"insert into fruit_load_list values ('{new_fruit}')")
+    return "Thanks for adding " + new_fruit
+
+
 sl.title('O jantar po')
 
 sl.header('piu!')
@@ -59,10 +65,6 @@ sl.dataframe(my_data_rows)
 fruit_choice = sl.text_input('What fruit would you like information about?','Jackfruit')
 insert_row_snowflake(fruit_choice)
 
-def insert_row_snowflake(new_fruit):
-  with my_cnx.cursor() as my_cur:
-    my_cur.execute(f"insert into fruit_load_list values ('{new_fruit}')")
-    return "Thanks for adding " + new_fruit
 
 
 
