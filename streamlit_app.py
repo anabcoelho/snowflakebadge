@@ -63,7 +63,7 @@ sl.dataframe(my_data_rows)
 
 
 fruit_choice = sl.text_input('What fruit would you like information about?','Jackfruit')
-insert_row_snowflake(fruit_choice)
+print(insert_row_snowflake(fruit_choice))
 
 
 
