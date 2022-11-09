@@ -2,6 +2,7 @@ import streamlit as sl
 import pandas as pd
 import requests as req
 import snowflake.connector
+import urllib.error import URLError
 
 
 def insert_row_snowflake(new_fruit):
@@ -65,6 +66,7 @@ sl.dataframe(my_data_rows)
 fruit_choice = sl.text_input('What fruit would you like information about?','Jackfruit')
 print(insert_row_snowflake(fruit_choice))
 
+sl.stop()
 
 
 
