@@ -2,7 +2,7 @@ import streamlit as sl
 import pandas as pd
 import requests as req
 import snowflake.connector
-import urllib.error import URLError
+from urllib.error import URLError
 
 
 def insert_row_snowflake(new_fruit):
