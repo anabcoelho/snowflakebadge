@@ -33,6 +33,9 @@ sl.dataframe(mostra_pramim)
 
 fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
 sl.header("Fruityvice Fruit Advice!")
+
+fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('The user entered ', fruit_choice)
 #sl.text(fruityvice_response.json() #só escreve o json
 
 # write your own comment -what does the next line do? 
