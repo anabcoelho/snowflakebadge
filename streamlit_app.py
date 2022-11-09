@@ -49,7 +49,20 @@ my_cnx = snowflake.connector.connect(**sl.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
+
 sl.header('A lista de fruta tem:')
+
+
 sl.dataframe(my_data_rows)
+
+
+fruit_choice = sl.text_input('What fruit would you like information about?','Jackfruit')
+insert_row_snow(fruit_choice)
+
+def insert_row_snowflake(new_fruit):
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute(f"insert into fruit_load_list values ('{new_fruit}')")
+    return "Thanks for adding " + new_fruit
+
 
 
