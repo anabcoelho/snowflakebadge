@@ -42,14 +42,18 @@ sl.dataframe(mostra_pramim)
 fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
 sl.header("Fruityvice Fruit Advice!")
 
-fruit_choice = sl.text_input('What fruit would you like information about?','Kiwi')
-sl.write('The user entered ', fruit_choice)
-#sl.text(fruityvice_response.json() #só escreve o json
+try:
+  fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+  if not fruit_choice:
+      streamlit.error("Please select a fruit to get information")
+  else:
 
-# write your own comment -what does the next line do? 
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
-# uma tabela ne
-sl.dataframe(fruityvice_normalized)
+    back_from_function = get_fruityvice_data(fruit_choice)
+    streamlit.dataframe(back_from_function)
+  
+except:
+  streamlit.error()
+  
 
 
 my_cnx = snowflake.connector.connect(**sl.secrets["snowflake"])
