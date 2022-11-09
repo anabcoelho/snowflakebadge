@@ -69,8 +69,20 @@ my_data_rows = my_cur.fetchall()
 
 sl.header('A lista de fruta tem:')
 
+def get_fruit_load_list():
+  with my_cnx.cursor() as my_cur:
+    my_cur.execute("select * from fruit_load_list")
+    return my_cur.fetchall()
 
-sl.dataframe(my_data_rows)
+#adciona um botão
+if streamlit.button('Get Fruit Load List'):
+  my_cnx = snowflake.connector.connect(**sl.secrets["snowflake"])
+  my_data_rows = get_fruit_load_list()
+  my_cnx.close()
+  sl.dataframe(my_data_rows)
+
+  
+ 
 
 
 fruit_choice = sl.text_input('What fruit would you like information about?','Jackfruit')
