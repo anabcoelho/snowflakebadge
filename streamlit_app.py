@@ -39,20 +39,26 @@ mostra_pramim = lista_fruta.loc[meufiltro]
 sl.dataframe(mostra_pramim)
 
 
-fruityvice_response = req.get("https://fruityvice.com/api/fruit/watermelon")
+
 sl.header("Fruityvice Fruit Advice!")
 
+def get_fruityvice_data(this_fruit_choice):
+  sl.write('The user entered ', this_fruit_choice)
+  fruityvice_response = req.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
+  fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+  return fruityvice_normalized
+
 try:
-  fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+  fruit_choice = sl.text_input('What fruit would you like information about?','Kiwi')
   if not fruit_choice:
-      streamlit.error("Please select a fruit to get information")
+      sl.error("Please select a fruit to get information")
   else:
 
     back_from_function = get_fruityvice_data(fruit_choice)
-    streamlit.dataframe(back_from_function)
+    sl.dataframe(back_from_function)
   
 except:
-  streamlit.error()
+  sl.error()
   
 
 
